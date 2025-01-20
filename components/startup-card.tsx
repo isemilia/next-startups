@@ -8,9 +8,7 @@ const StartupCard = ({ post }: { post: IStartupPost }) => {
   return (
     <li className={'startup-card group'}>
       <div className="flex-between">
-        <p className="startup-card-date">
-          {formatDate(post._createdAt * 1000)}
-        </p>
+        <p className="startup-card-date">{formatDate(post._createdAt)}</p>
         <div className="flex gap-1.5">
           <EyeIcon className={'size-6 text-primary'} />
           <span className={'text-16-medium'}>{post.views}</span>
@@ -27,7 +25,7 @@ const StartupCard = ({ post }: { post: IStartupPost }) => {
         </div>
         <Link href={`/user/${post.author?._id}`}>
           <Image
-            src={post.author?.avatar ?? 'https://placehold.co/48x48'}
+            src={post.author?.image ?? 'https://placehold.co/48x48'}
             width={48}
             height={48}
             className={'rounded-full'}
