@@ -32,11 +32,13 @@ export const SINGLE_STARTUP_QUERY = defineQuery(`
       _id,
       name,
       image,
-      bio
+      bio,
+      username
     }, 
     views, 
     description,
     category,
-    image
+    image,
+    pitch
   }
 `)
