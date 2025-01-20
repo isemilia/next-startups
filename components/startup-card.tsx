@@ -3,6 +3,9 @@ import { EyeIcon } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
+import { Author, Startup } from '@/sanity/types'
+
+export type IStartupPost = Omit<Startup, 'author'> & { author?: Author }
 
 const StartupCard = ({ post }: { post: IStartupPost }) => {
   return (
@@ -38,7 +41,7 @@ const StartupCard = ({ post }: { post: IStartupPost }) => {
         <img src={post.image} alt="thumbnail" className={'startup-card-img'} />
       </Link>
       <div className="flex-between gap-3 mt-5">
-        <Link href={`/?query=${post.category.toLowerCase()}`}>
+        <Link href={`/?query=${post.category?.toLowerCase()}`}>
           <span className="text-16-medium">{post.category}</span>
         </Link>
         <Button className={'startup-card-btn'} asChild>

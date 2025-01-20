@@ -1,54 +1,11 @@
 import SearchForm from '@/components/search-form'
-import StartupCard from '@/components/startup-card'
+import StartupCard, { IStartupPost } from '@/components/startup-card'
 import { client } from '@/sanity/lib/client'
 import { STARTUP_QUERY } from '@/sanity/lib/queries'
 
-const posts = [
-  {
-    _createdAt: 1679616000, // Yesterday
-    views: 55,
-    author: {
-      _id: 1,
-      name: 'Alice',
-      avatar:
-        'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=400&h=400&fit=crop',
-    },
-    _id: 1,
-    description: 'This is a description',
-    image: 'https://images.unsplash.com/photo-1634912314704-c646c586b131?w=800',
-    category: 'Robots',
-    title: 'We Robots',
-  },
-  {
-    _createdAt: 1679702400, // Today
-    views: 120,
-    author: {
-      _id: 2,
-      name: 'Bob',
-      avatar:
-        'https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=400&h=400&fit=crop',
-    },
-    _id: 2,
-    description: 'Exploring the world of technology',
-    image: 'https://images.unsplash.com/photo-1526374873451-46fdbf08d3d6?w=800',
-    category: 'Technology',
-    title: 'Tech Wonders',
-  },
-  {
-    _createdAt: 1679529600, // Two days ago
-    views: 89,
-    author: {
-      _id: 3,
-      name: 'Charlie',
-      avatar: null,
-    },
-    _id: 3,
-    description: 'The latest scientific discoveries',
-    image: 'https://images.unsplash.com/photo-1556742400-b5dbcb6d48b1?w=800',
-    category: 'Science',
-    title: 'Discoveries',
-  },
-]
+// sanity typegen npm commands:
+// npx sanity@latest schema extract --path=./sanity/extract.json
+// npx sanity@latest typegen generate
 
 export default async function Home({
   searchParams,
@@ -59,7 +16,7 @@ export default async function Home({
 
   const posts = await client.fetch(STARTUP_QUERY)
 
-  console.log(JSON.stringify(posts, null, 2))
+  // console.log(JSON.stringify(posts, null, 2))
 
   return (
     <>
