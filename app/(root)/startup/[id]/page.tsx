@@ -6,6 +6,9 @@ import { formatDate } from '@/lib/utils'
 import Link from 'next/link'
 import Image from 'next/image'
 import markdownit from 'markdown-it'
+import { Suspense } from 'react'
+import { Skeleton } from '@/components/ui/skeleton'
+import View from '@/components/view'
 
 export const expiremental_ppr = true
 
@@ -74,6 +77,10 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <hr className="divider" />
 
         {/*{ todo: editor selected startups }*/}
+
+        <Suspense fallback={<Skeleton className={'view-skeleton'} />}>
+          <View id={id} />
+        </Suspense>
       </section>
     </>
   )
