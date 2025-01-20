@@ -1,7 +1,6 @@
 import SearchForm from '@/components/search-form'
 import StartupCard, { IStartupPost } from '@/components/startup-card'
-// import { client } from '@/sanity/lib/client'
-import { STARTUP_QUERY } from '@/sanity/lib/queries'
+import { STARTUPS_QUERY } from '@/sanity/lib/queries'
 import { sanityFetch, SanityLive } from '@/sanity/lib/live'
 
 // sanity typegen npm commands:
@@ -14,11 +13,10 @@ export default async function Home({
   searchParams?: Promise<{ query?: string }>
 }) {
   const query = (await searchParams)?.query
+  const params = { search: query || null }
 
-  // const posts = await client.fetch(STARTUP_QUERY)
-  const { data: posts } = await sanityFetch({ query: STARTUP_QUERY })
-
-  // console.log(JSON.stringify(posts, null, 2))
+  // const posts = await client.fetch(STARTUPS_QUERY)
+  const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY, params })
 
   return (
     <>
